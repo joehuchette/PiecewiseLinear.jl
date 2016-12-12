@@ -20,7 +20,7 @@ m = Model()
 @variable(m, x)
 ```
 
-To model the graph of a piecewise linear function $f(x)$, take ``d`` as some set of breakpoints along the real line, and ``fd = [f(x) for x in d]`` as the corresponding function values. You can model this function in JuMP using the following function:
+To model the graph of a piecewise linear function ``f(x)``, take ``d`` as some set of breakpoints along the real line, and ``fd = [f(x) for x in d]`` as the corresponding function values. You can model this function in JuMP using the following function:
 
 ```julia
 z = piecewiselinear(m, x, d, fd)
