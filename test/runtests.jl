@@ -34,6 +34,21 @@ let d = linspace(1,2π,8), f = sin
 end
 
 let d = linspace(1,2π,8), f = sin
+    mInc = Model()
+    @variable(mInc, xInc)
+    zInc = piecewiselinear(mInc, xInc, d, sin, method=:Incremental)
+    @objective(mInc, Max, zInc)
+    @test solve(mInc) == :Optimal
+    @test isapprox(getvalue(xInc), 1.75474, rtol=1e-4)
+    @test isapprox(getvalue(zInc), 0.98313, rtol=1e-4)
+
+    @constraint(mInc, xInc ≤ 1.5zInc)
+    @test solve(mInc) == :Optimal
+    @test isapprox(getvalue(xInc), 1.36495, rtol=1e-4)
+    @test isapprox(getvalue(zInc), 0.90997, rtol=1e-4)
+end
+
+let d = linspace(1,2π,8), f = sin
     mLog = Model()
     @variable(mLog, xLog)
     zLog = piecewiselinear(mLog, xLog, d, sin, method=:Logarithmic)
