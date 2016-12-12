@@ -102,9 +102,9 @@ end
 
 function sos2_logarthmic_formulation!(m::JuMP.Model, λ)
     counter = m.ext[:PWL].counter
-    @show n = length(λ)-1
-    @show k = ceil(Int,log2(n))
-    @show H = reflected_gray(k)
+    n = length(λ)-1
+    k = ceil(Int,log2(n))
+    H = reflected_gray(k)
     y = JuMP.@variable(m, [1:k], Bin, basename="y_$counter")
     for i in 1:k
         JuMP.@constraints(m, begin

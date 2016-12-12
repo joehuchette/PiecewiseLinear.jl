@@ -1,6 +1,6 @@
 # PiecewiseLinear
 
-A package for modeling optimization problems containing piecewise linear functions. Current support is for continuous univariate functions.
+A package for modeling optimization problems containing piecewise linear functions. Current support is for (the graphs of) continuous univariate functions.
 
 [![Build Status](https://travis-ci.org/joehuchette/PiecewiseLinear.jl.svg?branch=master)](https://travis-ci.org/joehuchette/PiecewiseLinear.jl)
 
